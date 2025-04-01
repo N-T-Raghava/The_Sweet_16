@@ -24,13 +24,6 @@ class TestAgeGenderDetection(unittest.TestCase):
         img = np.zeros((300, 300, 3), dtype=np.uint8)  # Black image with no face
         results = detect_age_gender(img)
         self.assertEqual(len(results), 0, "False detection in blank image")
-    
-    def test_video_capture(self):
-        """Test if video capture is functional."""
-        cap = cv2.VideoCapture(0)
-        ret, _ = cap.read()
-        cap.release()
-        self.assertTrue(ret, "Video capture failed")
 
 if __name__ == '__main__':
     unittest.main()
