@@ -10,12 +10,12 @@ app = Flask(__name__)
 base_dir = r"D:\SOFTWARE_PROJECT\Finnale"
 
 # Define model file paths
-faceProto = os.path.join(base_dir, "opencv_face_detector.pbtxt")
-faceModel = os.path.join(base_dir, "opencv_face_detector_uint8.pb")
-ageProto = os.path.join(base_dir, "age_deploy.prototxt")
-ageModel = os.path.join(base_dir, "age_net.caffemodel")
-genderProto = os.path.join(base_dir, "gender_deploy.prototxt")
-genderModel = os.path.join(base_dir, "gender_net.caffemodel")
+faceProto = 'opencv_face_detector.pbtxt'
+faceModel = 'opencv_face_detector_uint8.pb'
+ageProto = 'age_deploy.prototxt'
+ageModel = 'age_net.caffemodel'
+genderProto = 'gender_deploy.prototxt'
+genderModel = 'gender_net.caffemodel'
 
 # Load the models
 faceNet = cv2.dnn.readNet(faceModel, faceProto)
