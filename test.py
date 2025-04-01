@@ -25,5 +25,13 @@ class TestAgeGenderDetection(unittest.TestCase):
         results = detect_age_gender(img)
         self.assertEqual(len(results), 0, "False detection in blank image")
 
+    def test_video_capture(self):
+        """Test if video capture is functional."""
+        if 'CI' in os.environ:
+            self.skipTest("Skipping video capture test in CI environment")
+        cap = cv2.VideoCapture(0)
+        ret, _ = cap.read()
+        cap.release()
+        self.assertTrue(ret, "Video capture failed")
 if __name__ == '__main__':
     unittest.main()
