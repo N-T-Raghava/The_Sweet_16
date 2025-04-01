@@ -24,15 +24,27 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install opencv-python-headless numpy flask
+        pip install opencv-python-headless numpy flask gdown
       shell: bash
-      
-    - name: Download face model
+
+    - name: Create models directory
+      run: mkdir -p models
+      shell: bash
+
+    - name: Download model files from Google Drive
       run: |
-        wget -O face_model.caffemodel http://example.com/path/to/faceModel.caffemodel
-        wget -O face_proto.prototxt http://example.com/path/to/faceProto.prototxt
-        
+        # Download face model and proto
+        gdown https://drive.google.com/uc?id=1nKOnInHnPZgfqFvqHBXaGiA_b9AymPXt -O models/face_model.caffemodel
+        gdown https://drive.google.com/uc?id=1PbSWggCEdqUEfftAXKFuw-y6dkeL8kAH -O models/face_proto.prototxt
+        # Download age model and proto
+        gdown https://drive.google.com/uc?id=1FuGyzS4_QWrPNAyiZWT2VOehe99FrkDu -O models/age_model.caffemodel
+        gdown https://drive.google.com/uc?id=1cg7GqARX9xn1lp7ivNBDfb0a6EQq81O_ -O models/age_proto.prototxt
+        # Download gender model and proto (same as age model)
+        gdown https://drive.google.com/uc?id=1cg7GqARX9xn1lp7ivNBDfb0a6EQq81O_ -O models/gender_model.caffemodel
+        gdown https://drive.google.com/uc?id=1cg7GqARX9xn1lp7ivNBDfb0a6EQq81O_ -O models/gender_proto.prototxt
+      shell: bash
+
     - name: Run tests
       run: |
-        python -m unittest test.py
+        python -m unittest tests.py
       shell: bash
