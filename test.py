@@ -1,6 +1,7 @@
 import unittest
 import cv2
 import numpy as np
+import os
 from app import detect_age_gender
 
 class TestAgeGenderDetection(unittest.TestCase):
