@@ -1,0 +1,490 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #f4ebeb;
+    scroll-behavior: smooth;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navigation Bar */
+nav {
+    background: rgba(0, 0, 0, 0.1);
+    /* Transparent glass effect */
+    padding: 10px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 999;
+    backdrop-filter: blur(100px);
+    /* Glass blur effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+nav .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* Gradient Hover Effect */
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, hsl(46, 69%, 50%), hsl(46, 67%, 41%));
+    z-index: -1;
+    transition: left 0.4s ease;
+}
+
+nav ul li a:hover::before {
+    left: 0;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+    box-shadow: 0 4px 12px hsl(46, 69%, 41%);
+}
+
+/* Sticky Nav on Scroll */
+nav.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+nav.scrolled .logo,
+nav.scrolled ul li a {
+    color: #ffffff;
+}
+
+nav.scrolled ul li a::before {
+    background: linear-gradient(135deg, hsl(46, 69%, 50%), hsl(46, 69%, 23%));
+}
+
+
+/* Hero Section (Dark with Image) */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    background-image: url('Star\ Trails.jpg');
+    /* Adjust path */
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Dark overlay */
+    z-index: -1;
+}
+.hero-content p{
+    text-shadow: 2px 2px 3px #171717;
+    color:hsl(0, 0%, 100%);
+}
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+
+    * {
+        color: #fff;
+        text-decoration: none;
+        text-shadow: 2px 2px 3px #171717;
+    }
+}
+
+/* Typing Animation */
+.typing {
+    font-size: 3rem;
+    font-weight: bold;
+    color: rgb(49, 49, 49);
+    text-shadow: 100px 100px 300px rgb(0, 0, 0);
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid white;
+    display: inline-block;
+}
+
+/* Blinking Cursor */
+@keyframes blink {
+    from {
+        border-color: rgb(0, 0, 0)
+    }
+
+    to {
+        border-color: transparent
+    }
+}
+
+.typing span {
+    display: inline-block;
+    border-right: 2px solid rgb(0, 0, 0);
+    animation: blink 0.6s steps(2) infinite;
+}
+
+/* About Section */
+.about-section {
+    padding: 80px 20px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgb(7, 0, 43), rgb(1, 35, 87));
+}
+
+.about-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 1200px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-box h2 {
+    font-size: 2.2rem;
+    /* Reduced from 2.8rem */
+    color: hsl(46, 69%, 50%);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.about-box p {
+    font-size: 1rem;
+    /* Reduced from 1.2rem */
+    line-height: 1.6;
+    /* Tighter spacing */
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+/* Feature Cards */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.feature-card {
+    background-color:rgba(14, 19, 25, 0.95);;
+    border-left: 4px solid #c9a530;
+    border-radius: 12px;
+    padding: 15px;
+    width: 220px;
+    /* Reduced width */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    /* Reduced from 1.5rem */
+    color: hsl(46, 69%, 50%);
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    /* Reduced from 1rem */
+    color: hsl(46, 69%, 50%);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for about box */
+.about-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-box {
+        padding: 30px;
+    }
+
+    .about-box h2 {
+        font-size: 1.8rem;
+        /* Further reduced for smaller screens */
+    }
+
+    .about-box p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Q&A Section */
+.qa-section {
+    background: linear-gradient(to right, rgb(7, 0, 43), rgb(1, 35, 87));
+    padding: 40px 15px;
+}
+
+.qa-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.qa-section h2 {
+    font-size: 2rem;
+    color: hsl(46, 69%, 50%);
+    margin-bottom: 20px;
+}
+
+.qa-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.question {
+    background-color: rgba(14, 19, 25, 0.95);
+    border-left: 4px solid #c9a530;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.question:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question h3 {
+    font-size: 1.2rem;
+    color: hsl(46, 69%, 50%);
+    margin: 0;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: hsl(46, 69%, 50%);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.answer {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 10px;
+    padding-top: 5px;
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* Team Section (White Background) */
+.team {
+    padding: 100px 0;
+    background: linear-gradient(to right, rgb(7, 0, 43), rgb(1, 35, 87));
+}
+
+.team h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: hsl(46, 69%, 50%);
+}
+
+.team-boxes {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    color: rgba(14, 19, 25, 0.95);
+    
+}
+
+.team-box {
+    color: hsl(0, 0%, 100%);
+    padding: 30px;
+    border-radius: 16px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #131313;
+    border-left: 4px solid #c9a530;
+}
+
+.team-box img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.team-box h3 {
+    margin: 15px 0 5px;
+    font-size: 1.5rem;
+}
+
+.team-box p {
+    font-size: 1rem;
+}
+
+.team-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: rgb(153, 111, 81);
+    margin-bottom: 20px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 3px solid #4caf50;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/* Navigation Bar Responsive */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    nav .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+.hamburger {
+    margin-right: 25px; /* Add some spacing */
+    padding: 10px;
+}
+nav {
+    height: 60px; /* Increase from 50px to 60px */
+}
+@media (max-width: 768px) {
+    nav {
+        height: 70px; /* Slightly increase for mobile */
+        padding: 0 15px;
+    }
+    
+    .hamburger {
+        padding: 12px; /* Ensure enough clickable area */
+    }
+}

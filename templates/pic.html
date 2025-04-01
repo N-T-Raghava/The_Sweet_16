@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Image - Age and Gender Prediction</title>
+    <link
+      rel="stylesheet"
+      href="static\style2.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Upload an Image</h1>
+      <form id="uploadForm">
+        <input type="file" id="imageInput" name="image" accept="image/*" required />
+        <br />
+        <button type="submit">Predict</button>
+      </form>
+      <div class="results" id="results"></div>
+    </div>
+
+    <script>
+      document.getElementById('uploadForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+        const fileInput = document.getElementById('imageInput');
+
+        if (fileInput.files.length === 0) {
+          alert('Please upload an image.');
+          return;
+        }
+
+        formData.append('image', fileInput.files[0]);
+
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = '';
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.length === 0) {
+            resultsContainer.innerHTML = '<p>No faces detected.</p>';
+          } else {
+            data.forEach((result, index) => {
+              const resultDiv = document.createElement('div');
+              resultDiv.innerHTML = `<p>Face ${index + 1}: Age - ${result.age}, Gender - ${result.gender}</p>`;
+              resultsContainer.appendChild(resultDiv);
+            });
+          }
+        } else {
+          const error = await response.json();
+          resultsContainer.innerHTML = `<p>Error: ${error.error}</p>`;
+        }
+      });
+    </script>
+  </body>
+</html>

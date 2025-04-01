@@ -1,0 +1,54 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, rgb(7, 0, 43), rgb(1, 35, 87));
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Container Styling */
+  .container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Video Styling */
+  .video-container {
+    margin-bottom: 20px;
+  }
+  
+  #videoFeed {
+    border: 3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Button Styling */
+  button {
+    background: chocolate;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background: hsl(50, 100%, 24%),;
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
+  }

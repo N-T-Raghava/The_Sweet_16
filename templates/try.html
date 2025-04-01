@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Age & Gender Detection</title>
+    <link
+      rel="stylesheet"
+      href="static\style1.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Live Age & Gender Detection</h2>
+      <div class="video-container">
+        <img
+          id="videoFeed"
+          src=""
+          alt="Video feed will appear here"
+          width="640"
+          height="480"
+          style="display: none"
+        />
+      </div>
+      <button id="startButton" onclick="toggleVideo()">Start Detection</button>
+    </div>
+
+    <script>
+      let isStreaming = false;
+      const videoFeed = document.getElementById("videoFeed");
+      const startButton = document.getElementById("startButton");
+
+      function toggleVideo() {
+        if (!isStreaming) {
+          videoFeed.src = "{{ url_for('video_feed') }}";
+          videoFeed.style.display = "block";
+          startButton.textContent = "Stop Detection";
+          isStreaming = true;
+        } else {
+          videoFeed.src = "";
+          videoFeed.style.display = "none";
+          startButton.textContent = "Start Detection";
+          isStreaming = false;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/style.css" />
+    <title>Age Prediction - The Sweet 16</title>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="container">
+        <div class="logo">The Sweet 16</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#qa">Q&A</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="/try" target="_blank" class="try-btn">Try Real-Time</a></li>
+          <li><a href="/pic" target="_blank" class="try-btn">Upload Image</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="hero-content">
+        <h1>
+          <a href="#" class="typewrite" data-period="2000" data-type='["Age & Gender Detection", "Know Your Age Instantly."]'>
+            <span class="wrap"></span>
+          </a>
+        </h1>
+        <p>A real-time AI-powered age and gender prediction software.</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="about-box">
+        <h2>About Our Project</h2>
+        <p>This project utilizes deep learning models to predict the age and gender of individuals from facial images. Built using OpenCV's DNN module, the system processes real-time video streams and static images with high accuracy.</p>
+        <p>The model categorizes age into bins of 5 years, providing a structured and refined age estimation. This technology has potential applications in security, marketing, and healthcare.</p>
+        <div class="features">
+          <div class="feature-card">
+            <h3>Real-Time Detection</h3>
+            <p>Provides instant predictions from live camera input, ensuring quick processing.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Precise Age Bins</h3>
+            <p>Age predictions are categorized into structured 5-year bins for better clarity.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Gender Classification</h3>
+            <p>Accurately identifies gender based on facial features using deep learning models.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="qa" class="qa">
+      <div class="qa-section">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <div class="qa-box">
+            <div class="question">
+              <div class="question-header">
+                <h3>How does the model predict age?</h3>
+                <button class="toggle-btn">+</button>
+              </div>
+              <div class="answer">
+                <p>The model processes facial features and assigns an age category based on a deep learning algorithm trained on diverse datasets.</p>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-header">
+                <h3>What are the age bins used?</h3>
+                <button class="toggle-btn">+</button>
+              </div>
+              <div class="answer">
+                <p>The model categorizes ages into bins of 5 years, such as 0-5, 5-10, 10-15, and so on.</p>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-header">
+                <h3>Can the model be improved?</h3>
+                <button class="toggle-btn">+</button>
+              </div>
+              <div class="answer">
+                <p>Yes! Continuous training with new datasets can improve accuracy and adaptability to different facial structures.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+      <div class="container">
+        <h2>Meet the Team</h2>
+        <div class="team-boxes">
+          <div class="team-box">
+            <img src="static/Tanmai.jpeg" alt="Tanmai Raghava" />
+            <h3>Tanmai Raghava</h3>
+            <p>Developer</p>
+            <h6>- Frontend</h6>
+          </div>
+          <div class="team-box">
+            <img src="static/gngng.jpeg" alt="Yesheeth Chintada" />
+            <h3>Yesheeth Chintada</h3>
+            <p>Developer</p>
+            <h6>- Backend</h6>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JavaScript for Toggle Menu -->
+    <script>
+      function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('active');
+      }
+    </script>
+
+    <!-- External JavaScript File -->
+    <script src="static/script.js"></script>
+  </body>
+</html>
