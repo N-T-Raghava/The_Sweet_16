@@ -50,10 +50,10 @@ class TestAgeGenderDetection(unittest.TestCase):
         print("Video capture test passed!")  # Output confirmation
 
       def test_video_feed(self):
-           """Test if the /video_feed endpoint returns a streaming response."""
-        response = self.client.get('/video_feed')
-        self.assertEqual(response.status_code, 200, "Video feed endpoint failed")
-        self.assertTrue(response.mimetype.startswith('multipart/x-mixed-replace'), "Incorrect MIME type")
+          """Test if the /video_feed endpoint returns a streaming response."""
+          response = self.client.get('/video_feed')
+          self.assertEqual(response.status_code, 200, "Video feed endpoint failed")
+          self.assertTrue(response.mimetype.startswith('multipart/x-mixed-replace'), "Incorrect MIME type")
 
 if __name__ == '__main__':
     unittest.main()
