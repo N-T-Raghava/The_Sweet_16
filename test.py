@@ -6,7 +6,7 @@ from app import app, detect_age_gender, faceNet, ageNet, genderNet
 
 class TestAgeGenderDetection(unittest.TestCase):
     @classmethod
-    def setUpClass(cls)
+    def setUpClass(cls):
         cls.client = app.test_client()
         cls.test_image_path = "static/Tanmai.jpeg"
 
