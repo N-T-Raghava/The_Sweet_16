@@ -10,6 +10,11 @@ class TestAgeGenderDetection(unittest.TestCase):
     def setUpClass(cls):
         cls.client = app.test_client()
         cls.test_image_path = "static/Tanmai.jpeg"  # Ensure you have a test image in the directory
+
+    def setUp(self):
+        """Set up test client before each test."""
+        self.app = app.test_client()  # Initialize the test client
+        self.app.testing = True  # Enable testing mode
     
     def test_model_loading(self):
         """Test if models are loaded properly."""
