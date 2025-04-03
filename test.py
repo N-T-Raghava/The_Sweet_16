@@ -2,19 +2,29 @@ import unittest
 import cv2
 import numpy as np
 import os
-from app import detect_age_gender
+from app import app, detect_age_gender, faceNet, ageNet, genderNet
 
 class TestAgeGenderDetection(unittest.TestCase):
-    
+    @classmethod
+    def setUpClass(cls)
+        cls.client = app.test_client()
+        cls.test_image_path = "static/Tanmai.jpeg"
+
+    def test_model_loading(self):
+        """Test if models are loaded properly."""
+        self.assertIsNotNone(faceNet, "Face detection model not loaded")
+        self.assertIsNotNone(ageNet, "Age detection model not loaded")
+        self.assertIsNotNone(genderNet, "Gender detection model not loaded")
+        
     def test_face_detection(self):
         """Test if face detection works with a sample image."""
-        img = cv2.imread("static/Tanmai.jpeg")  # Sample test image
+        img = cv2.imread(self.test_image_path)  # Sample test image
         results = detect_age_gender(img)
         self.assertTrue(len(results) > 0, "No faces detected in the image")
     
     def test_age_gender_prediction(self):
         """Test if the age and gender prediction are returned."""
-        img = cv2.imread("static/Tanmai.jpeg")
+        img = cv2.imread(self.test_image_path)
         results = detect_age_gender(img)
         for result in results:
             self.assertIn(result['age'], [f'{i}-{i+5}' for i in range(0, 100, 5)], "Invalid age range")
@@ -38,6 +48,12 @@ class TestAgeGenderDetection(unittest.TestCase):
             self.fail("Video capture failed. No frame was captured.")
         
         print("Video capture test passed!")  # Output confirmation
+
+      def test_video_feed(self):
+           """Test if the /video_feed endpoint returns a streaming response."""
+        response = self.client.get('/video_feed')
+        self.assertEqual(response.status_code, 200, "Video feed endpoint failed")
+        self.assertTrue(response.mimetype.startswith('multipart/x-mixed-replace'), "Incorrect MIME type")
 
 if __name__ == '__main__':
     unittest.main()
