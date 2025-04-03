@@ -79,5 +79,39 @@ class TestAgeGenderDetection(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('<div class="hamburger" onclick="toggleMenu()">☰</div>'.encode('utf-8'), response.data)
 
+    def test_index_links(self):
+        """Test if all navigation links exist on index.html."""
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<a href="#qa">Q&A</a>', response.data)
+
+    def test_upload_form(self):
+        """Test if the upload form exists in pic.html."""
+        response = self.client.get('/pic')
+        self.assertIn(b'<form id="uploadForm">', response.data)
+        self.assertIn(b'<input type="file"', response.data)
+        self.assertIn(b'<button type="submit">Predict</button>', response.data)
+
+    def test_js_inclusion(self):
+        """Test if JavaScript files are included in index.html."""
+        response = self.client.get('/')
+        self.assertIn(b'<script src="static/script.js"></script>', response.data)
+    
+    def test_css_inclusion(self):
+        """Test if CSS files are included in index.html."""
+        response = self.client.get('/')
+        self.assertIn(b'<link rel="stylesheet" href="static/style.css" />', response.data)
+    
+    def test_faq_toggle(self):
+        """Test if FAQ toggle buttons exist in index.html."""
+        response = self.client.get('/')
+        self.assertIn(b'<button class="toggle-btn">+</button>', response.data)
+    
+    def test_team_section(self):
+        """Test if the team section contains the expected team members."""
+        response = self.client.get('/')
+        self.assertIn(b'<h3>Tanmai Raghava</h3>', response.data)
+        self.assertIn(b'<h3>Yesheeth Chintada</h3>', response.data)
+
 if __name__ == '__main__':
     unittest.main()
