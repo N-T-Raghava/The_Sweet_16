@@ -113,5 +113,10 @@ class TestAgeGenderDetection(unittest.TestCase):
         self.assertIn(b'<h3>Tanmai Raghava</h3>', response.data)
         self.assertIn(b'<h3>Yesheeth Chintada</h3>', response.data)
 
+    def test_live_video_toggle(self):
+        """Test if the Start Detection button exists in try.html."""
+        response = self.client.get('/try')
+        self.assertIn(b'<button id="startButton" onclick="toggleVideo()">Start Detection</button>', response.data)
+
 if __name__ == '__main__':
     unittest.main()
