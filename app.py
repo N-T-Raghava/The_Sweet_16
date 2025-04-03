@@ -6,16 +6,13 @@ import time
 
 app = Flask(__name__)
 
-# Define base directory for model files
-base_dir = r"D:\SOFTWARE_PROJECT\Finnale"
-
 # Define model file paths
-faceProto = 'opencv_face_detector.pbtxt'
-faceModel = 'opencv_face_detector_uint8.pb'
-ageProto = 'age_deploy.prototxt'
-ageModel = 'age_net.caffemodel'
-genderProto = 'gender_deploy.prototxt'
-genderModel = 'gender_net.caffemodel'
+faceProto = 'models/opencv_face_detector.pbtxt'
+faceModel = 'models/opencv_face_detector_uint8.pb'
+ageProto = 'models/age_deploy.prototxt'
+ageModel = 'models/age_net.caffemodel'
+genderProto = 'models/gender_deploy.prototxt'
+genderModel = 'models/gender_net.caffemodel'
 
 # Load the models
 faceNet = cv2.dnn.readNet(faceModel, faceProto)
