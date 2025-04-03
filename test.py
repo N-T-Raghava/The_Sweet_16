@@ -29,10 +29,17 @@ class TestAgeGenderDetection(unittest.TestCase):
     def test_video_capture(self):
         """Test if video capture is functional."""
         if 'CI' in os.environ:
-            self.skipTest("Skipping video capture test in CI environment")
-        cap = cv2.VideoCapture(0)
-        ret, _ = cap.read()
-        cap.release()
-        self.assertTrue(ret, "Video capture failed")
+            print("Skipping video capture test in CI environment")
+            return  # Skip test in CI
+    
+        cap = cv2.VideoCapture(0)  # Open default camera
+        ret, frame = cap.read()  # Read frame
+        cap.release()  # Release camera
+    
+        if not ret:
+            self.fail("Video capture failed. No frame was captured.")
+        
+        print("Video capture test passed!")  # Output confirmation
+
 if __name__ == '__main__':
     unittest.main()
