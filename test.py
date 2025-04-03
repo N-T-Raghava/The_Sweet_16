@@ -55,5 +55,23 @@ class TestAgeGenderDetection(unittest.TestCase):
         self.assertEqual(response.status_code, 200, "Video feed endpoint failed")
         self.assertTrue(response.mimetype.startswith('multipart/x-mixed-replace'), "Incorrect MIME type")
 
+    def test_index_page(self):
+        """Test if index.html loads successfully."""
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<title>Age Prediction - The Sweet 16</title>', response.data)
+
+    def test_try_page(self):
+        """Test if try.html loads successfully."""
+        response = self.client.get('/try')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<title>Live Age & Gender Detection</title>', response.data)
+
+    def test_pic_page(self):
+        """Test if pic.html loads successfully."""
+        response = self.client.get('/pic')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<title>Upload Image - Age and Gender Prediction</title>', response.data)
+
 if __name__ == '__main__':
     unittest.main()
