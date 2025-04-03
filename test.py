@@ -27,10 +27,6 @@ class TestAgeGenderDetection(unittest.TestCase):
         self.assertEqual(len(results), 0, "False detection in blank image")
 
     def test_video_capture(self):
-        """Test if video capture is functional."""
-        if 'CI' in os.environ:
-            print("Skipping video capture test in CI environment")
-            return  # Skip test in CI
     
         cap = cv2.VideoCapture(0)  # Open default camera
         ret, frame = cap.read()  # Read frame
