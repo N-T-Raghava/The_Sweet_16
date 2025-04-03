@@ -73,5 +73,11 @@ class TestAgeGenderDetection(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'<title>Upload Image - Age and Gender Prediction</title>', response.data)
 
+    def test_nav_hamburger(self):
+        """Test if the hamburger menu exists in index.html."""
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('<div class="hamburger" onclick="toggleMenu()">☰</div>'.encode('utf-8'), response.data)
+
 if __name__ == '__main__':
     unittest.main()
