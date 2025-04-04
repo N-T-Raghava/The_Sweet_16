@@ -29,7 +29,7 @@
 
       function toggleVideo() {
         if (!isStreaming) {
-          videoFeed.src = "{'/video_feed'}";
+          videoFeed.src = "/video_feed";
           videoFeed.style.display = "block";
           startButton.textContent = "Stop Detection";
           isStreaming = true;
