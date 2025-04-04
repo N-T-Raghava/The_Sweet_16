@@ -4,10 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upload Image - Age and Gender Prediction</title>
-    <link
-      rel="stylesheet"
-      href="static\style2.css"
-    />
+    <link rel="stylesheet" href="static/style2.css" />
+    <style>
+      body {
+        background-color: #1a1a1a;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      button {
+        background-color: gold;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      .results {
+        margin-top: 20px;
+      }
+
+      /* Styles for Image */
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -42,10 +82,22 @@
         const resultsContainer = document.getElementById('results');
         resultsContainer.innerHTML = '';
 
+        // Create an image preview container
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'image-container';
+
+        // Show the uploaded image
+        const imgPreview = document.createElement('img');
+        imgPreview.src = URL.createObjectURL(fileInput.files[0]);
+        imgPreview.alt = "Uploaded Image";
+
+        imageContainer.appendChild(imgPreview);
+        resultsContainer.appendChild(imageContainer);
+
         if (response.ok) {
           const data = await response.json();
           if (data.length === 0) {
-            resultsContainer.innerHTML = '<p>No faces detected.</p>';
+            resultsContainer.innerHTML += '<p>No faces detected.</p>';
           } else {
             data.forEach((result, index) => {
               const resultDiv = document.createElement('div');
@@ -55,7 +107,7 @@
           }
         } else {
           const error = await response.json();
-          resultsContainer.innerHTML = `<p>Error: ${error.error}</p>`;
+          resultsContainer.innerHTML += `<p>Error: ${error.error}</p>`;
         }
       });
     </script>
