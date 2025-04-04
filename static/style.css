@@ -1133,3 +1133,186 @@
     align-items: center;
     justify-content: center
   }
+    /* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    /* Base adjustments */
+    section {
+      padding: 60px 0;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    /* Navigation adjustments */
+    .navbar .container {
+      padding: 0 10px;
+    }
+    
+    .logo {
+      font-size: 1.4rem;
+    }
+    
+    .nav-links {
+      position: fixed;
+      top: 70px;
+      left: -100%;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      width: 100%;
+      height: calc(100vh - 70px);
+      z-index: 999;
+      transition: left 0.3s ease;
+      padding: 20px 0;
+    }
+    
+    .nav-links.active {
+      left: 0;
+    }
+    
+    .nav-links li {
+      margin: 15px 0;
+    }
+    
+    .hamburger {
+      display: block;
+    }
+    
+    /* Hero section */
+    .hero-content h1 {
+      font-size: 2.2rem;
+      padding: 20px 0;
+    }
+    
+    .hero-content p {
+      font-size: 1rem;
+      padding: 5px 0;
+      margin-bottom: 20px;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .primary-btn, .secondary-btn {
+      width: 80%;
+    }
+    
+    /* About section */
+    .about-section {
+      padding: 60px 20px;
+    }
+    
+    .about-box {
+      padding: 25px;
+    }
+    
+    .stats-container {
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .stat-item {
+      width: 100%;
+    }
+    
+    /* Feature cards */
+    .features {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .feature-card {
+      width: 90%;
+    }
+    
+    /* Demo section */
+    .demo-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .demo-interface, .demo-info {
+      max-width: 90%;
+    }
+    
+    /* Results section */
+    .comparison-slider {
+      height: 300px;
+    }
+    
+    .testimonial-card {
+      width: 90%;
+    }
+    
+    /* Team section */
+    .team-box {
+      width: 90%;
+    }
+    
+    /* Newsletter */
+    .newsletter-form {
+      flex-direction: column;
+      width: 90%;
+      margin: 0 auto;
+    }
+    
+    .newsletter-form input {
+      border-radius: 50px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    
+    .newsletter-form button {
+      border-radius: 50px;
+      width: 100%;
+    }
+    
+    /* Footer */
+    .footer-content {
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .footer-links {
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .social-icons {
+      justify-content: center;
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+      width: 40px;
+      height: 40px;
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+  
+  /* Small phones */
+  @media screen and (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 1.8rem;
+    }
+    
+    .primary-btn, .secondary-btn {
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+    }
+    
+    .about-box p {
+      font-size: 0.95rem;
+    }
+    
+    .question-header h3 {
+      font-size: 1rem;
+    }
+  }
