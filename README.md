@@ -6,4 +6,4 @@ Don't change the location of the files inside the project file, download the who
 The values of age and gender given in the output are based on a open cv model, it might not give accurate results.
 
 # The Workflow(The CI/CD Pipeline)
-![alt text](static/The_workflow.png)
+![alt text](static/workflow_diag.png)
