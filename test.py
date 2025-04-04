@@ -76,14 +76,14 @@ class TestAgeGenderDetection(unittest.TestCase):
         """Test if FAQ toggle buttons exist in index.html."""
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'<button class="toggle-btn"><i class="fas fa-plus"></i></button>', response.data) #Corrected line
+        self.assertIn(b'<button class="toggle-btn"><i class="fas fa-plus"></i></button>', response.data)
     
     def test_nav_hamburger(self):
         """Test if the hamburger menu exists in index.html."""
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'<div class="hamburger" onclick="toggleMenu()">', response.data) #Corrected line
-        self.assertIn(b'<div class="bar"></div>', response.data) #added line.
+        self.assertIn(b'<div class="hamburger" onclick="toggleMenu()">', response.data)
+        self.assertIn(b'<div class="bar"></div>', response.data)
 
     def test_try_page(self):
         """Test if try.html loads successfully."""
@@ -120,11 +120,75 @@ class TestAgeGenderDetection(unittest.TestCase):
         self.assertIn(b'<h3>Tanmai Raghava</h3>', response.data)
         self.assertIn(b'<h3>Yesheeth Chintada</h3>', response.data)
     
-
     def test_live_video_toggle(self):
         """Test if the Start Detection button exists in try.html."""
         response = self.client.get('/try')
         self.assertIn(b'<button id="startButton" onclick="toggleVideo()">Start Detection</button>', response.data)
+
+    def test_js_typewriter_exists(self):
+        """Test if typewriter effect JavaScript functionality exists in the HTML."""
+        response = self.client.get('/')
+        self.assertIn(b'typewrite', response.data)
+        self.assertIn(b'data-period', response.data)
+        self.assertIn(b'data-type', response.data)
+
+    def test_theme_toggle_exists(self):
+        """Test if theme toggle element exists."""
+        response = self.client.get('/')
+        self.assertIn(b'id="theme-icon"', response.data)
+
+    def test_back_to_top_button(self):
+        """Test if back to top button exists."""
+        response = self.client.get('/')
+        self.assertIn(b'id="back-to-top"', response.data)
+
+    def test_slider_element(self):
+        """Test if slider elements exist for interactive sections."""
+        # Replacing comparison-slider test as that element doesn't exist
+        response = self.client.get('/')
+        self.assertIn(b'demo-interface', response.data)
+        self.assertIn(b'demo-controls', response.data)
+
+    def test_demo_buttons(self):
+        """Test if demo buttons exist in the HTML."""
+        response = self.client.get('/')
+        self.assertIn(b'class="demo-btn"', response.data)
+        self.assertIn(b'id="try-sample-1"', response.data)
+        self.assertIn(b'id="try-sample-2"', response.data)
+        self.assertIn(b'id="try-sample-3"', response.data)
+
+    def test_prediction_display_elements(self):
+        """Test if prediction display elements exist."""
+        response = self.client.get('/')
+        self.assertIn(b'id="prediction-display"', response.data)
+        self.assertIn(b'class="age-prediction"', response.data)
+        self.assertIn(b'class="gender-prediction"', response.data)
+
+    def test_loading_animation(self):
+        """Test if loading animation element exists."""
+        response = self.client.get('/')
+        self.assertIn(b'class="loader"', response.data)
+
+    def test_animation_elements(self):
+        """Test if animation elements exist in the DOM."""
+        # Replace fade-in test since that class doesn't exist
+        response = self.client.get('/')
+        self.assertIn(b'scroll-indicator', response.data)
+        self.assertIn(b'mouse', response.data)
+
+    def test_upload_js_interaction(self):
+        """Test if the image upload JavaScript elements exist."""
+        response = self.client.get('/pic')
+        self.assertIn(b'id="uploadForm"', response.data)
+        self.assertIn(b'id="imageInput"', response.data, "Image input element not found")
+        self.assertIn(b'id="results"', response.data, "Results display element not found")
+
+    def test_video_toggle_functionality(self):
+        """Test if video toggle JavaScript elements exist."""
+        response = self.client.get('/try')
+        self.assertIn(b'id="startButton"', response.data)
+        self.assertIn(b'onclick="toggleVideo()"', response.data)
+        self.assertIn(b'id="videoFeed"', response.data, "Video feed element not found")
     
     
 if __name__ == '__main__':
