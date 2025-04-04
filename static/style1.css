@@ -1,54 +1,171 @@
-/* General Styles */
+/* Base Styles */
+:root {
+  --primary-color: hsl(46, 69%, 50%);
+  --primary-dark: hsl(46, 67%, 41%);
+  --primary-light: hsl(46, 70%, 65%);
+  --bg-gradient-start: rgb(7, 0, 43);
+  --bg-gradient-end: rgb(1, 35, 87);
+  --card-bg: rgba(14, 19, 25, 0.95);
+  --text-light: #f4ebeb;
+  --text-dark: #333;
+  --transition-standard: all 0.3s ease;
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, rgb(7, 0, 43), rgb(1, 35, 87));
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-light);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background: linear-gradient(to right, var(--bg-gradient-start), var(--bg-gradient-end));
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+.container {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.video-container {
+  width: 100%;
+  height: 480px;
+  margin: 20px 0 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-container::before {
+  content: 'Video will appear here';
+  position: absolute;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+#videoFeed {
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 2;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+}
+
+button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  padding: 14px 45px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-standard);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(201, 165, 48, 0.3);
+  font-size: 1.1rem;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(201, 165, 48, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(201, 165, 48, 0.3);
+}
+
+/* Active streaming state */
+button.streaming {
+  background: #e74c3c;
+}
+
+button.streaming:hover {
+  background: #c0392b;
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes breathing {
+  0% { box-shadow: 0 0 0 0 rgba(201, 165, 48, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(201, 165, 48, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 165, 48, 0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .video-container {
+    height: 360px;
   }
   
-  /* Container Styling */
-  .container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+  button {
+    padding: 12px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container {
+    height: 280px;
   }
   
   h2 {
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1.8rem;
   }
   
-  /* Video Styling */
-  .video-container {
-    margin-bottom: 20px;
+  .container {
+    padding: 25px 20px;
   }
-  
-  #videoFeed {
-    border: 3px solid white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
-  }
-  
-  /* Button Styling */
-  button {
-    background: chocolate;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-  }
-  
-  button:hover {
-    background: hsl(50, 100%, 24%),;
-    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
-  }
+}

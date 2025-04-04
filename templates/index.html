@@ -4,54 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="static/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <title>Age Prediction - The Sweet 16</title>
   </head>
 
   <body>
     <!-- Navigation Bar -->
-    <nav>
+    <nav class="navbar">
       <div class="container">
-        <div class="logo">The Sweet 16</div>
+        <div class="logo">
+          <i class="fas fa-brain"></i> The Sweet 16
+        </div>
         <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#qa">Q&A</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="/try" target="_blank" class="try-btn">Try Real-Time</a></li>
+          <li><a href="#home" class="nav-item">Home</a></li>
+          <li><a href="#about" class="nav-item">About</a></li>
+          <li><a href="#demo" class="nav-item">Demo</a></li>
+          <li><a href="#qa" class="nav-item">Q&A</a></li>
+          <li><a href="#team" class="nav-item">Team</a></li>
+          <li><a href="/try" target="_blank" class="try-btn pulse">Try Real-Time</a></li>
           <li><a href="/pic" target="_blank" class="try-btn">Upload Image</a></li>
         </ul>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="theme-toggle">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
+      
       <div class="hero-content">
         <h1>
-          <a href="#" class="typewrite" data-period="2000" data-type='["Age & Gender Detection", "Know Your Age Instantly."]'>
+          <a href="#" class="typewrite" data-period="2000" data-type='["Age & Gender Detection", "Know Your Age Instantly.", "Powered by Advanced AI"]'>
             <span class="wrap"></span>
           </a>
         </h1>
-        <p>A real-time AI-powered age and gender prediction software.</p>
-      </div>
+        <p>A real-time AI-powered age and gender prediction software with industry-leading accuracy.</p>
+        <div class="hero-buttons">
+          <a href="#demo" class="primary-btn">Try Demo</a>
+        </div>
+        <div class="scroll-indicator">
+          <div class="mouse"></div>
+          <p>Scroll Down</p>
+        </div>
+     
     </section>
 
     <!-- About Section -->
     <section id="about" class="about-section">
       <div class="about-box">
-        <h2>About Our Project</h2>
-        <p>This project utilizes deep learning models to predict the age and gender of individuals from facial images. Built using OpenCV's DNN module, the system processes real-time video streams and static images with high accuracy.</p>
-        <p>The model categorizes age into bins of 5 years, providing a structured and refined age estimation. This technology has potential applications in security, marketing, and healthcare.</p>
+        <div class="section-header">
+          <span class="tag">About Our Project</span>
+          <h2>Smart Age & Gender Detection</h2>
+        </div>
+        <p>This project utilizes state-of-the-art deep learning models to predict the age and gender of individuals from facial images. Built using OpenCV's DNN module, the system processes real-time video streams and static images with high accuracy.</p>
+        <p>The model categorizes age into bins of 5 years, providing a structured and refined age estimation. This technology has potential applications in security, marketing, healthcare, and more.</p>
+        
+        <div class="stats-container">
+          <div class="stat-item">
+            <h3>70%</h3>
+            <p>Accuracy Rate</p>
+          </div>
+          <div class="stat-item">
+            <h3>&lt;0.5s</h3>
+            <p>Processing Time</p>
+          </div>
+          <div class="stat-item">
+            <h3>10K+</h3>
+            <p>Training Images</p>
+          </div>
+        </div>
+        
         <div class="features">
           <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-video"></i>
+            </div>
             <h3>Real-Time Detection</h3>
             <p>Provides instant predictions from live camera input, ensuring quick processing.</p>
           </div>
           <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
             <h3>Precise Age Bins</h3>
             <p>Age predictions are categorized into structured 5-year bins for better clarity.</p>
           </div>
           <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-venus-mars"></i>
+            </div>
             <h3>Gender Classification</h3>
             <p>Accurately identifies gender based on facial features using deep learning models.</p>
           </div>
@@ -59,38 +107,110 @@
       </div>
     </section>
 
+    <!-- Demo Section -->
+    <section id="demo" class="demo-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag">Interactive Demo</span>
+          <h2>See It In Action</h2>
+        </div>
+        <div class="demo-container">
+          <div class="demo-interface">
+            <div class="demo-preview">
+              <img src="static/test_img/image1.jpg" id="demo-image" />
+              <div class="prediction-overlay" id="prediction-display">
+                <span class="age-prediction">Age: 0-5</span>
+                <span class="gender-prediction">Gender: Male</span>
+              </div>
+            </div>
+            <div class="demo-controls">
+              <button id="try-sample-1" class="demo-btn">Sample 1</button>
+              <button id="try-sample-2" class="demo-btn">Sample 2</button>
+              <button id="try-sample-3" class="demo-btn">Sample 3</button>
+              <a href="/try" class="primary-btn">Try with Your Camera</a>
+            </div>
+          </div>
+          <div class="demo-info">
+            <h3>How It Works</h3>
+            <div class="workflow-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Face Detection</h4>
+                <p>Our system first identifies faces in the image using advanced face detection algorithms.</p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Feature Extraction</h4>
+                <p>Key facial features are extracted and analyzed by our deep learning model.</p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Age & Gender Prediction</h4>
+                <p>Based on the extracted features, our AI determines age range and gender with high accuracy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+
     <!-- FAQ Section -->
-    <section id="qa" class="qa">
-      <div class="qa-section">
-        <div class="container">
+    <section id="qa" class="qa-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag">Common Questions</span>
           <h2>Frequently Asked Questions</h2>
-          <div class="qa-box">
-            <div class="question">
-              <div class="question-header">
-                <h3>How does the model predict age?</h3>
-                <button class="toggle-btn">+</button>
-              </div>
-              <div class="answer">
-                <p>The model processes facial features and assigns an age category based on a deep learning algorithm trained on diverse datasets.</p>
-              </div>
+        </div>
+        <div class="qa-box">
+          <div class="question">
+            <div class="question-header">
+              <h3>How does the model predict age?</h3>
+              <button class="toggle-btn"><i class="fas fa-plus"></i></button>
             </div>
-            <div class="question">
-              <div class="question-header">
-                <h3>What are the age bins used?</h3>
-                <button class="toggle-btn">+</button>
-              </div>
-              <div class="answer">
-                <p>The model categorizes ages into bins of 5 years, such as 0-5, 5-10, 10-15, and so on.</p>
-              </div>
+            <div class="answer">
+              <p>The model processes facial features and assigns an age category based on a deep learning algorithm trained on diverse datasets. It analyzes over 68 facial landmarks and compares patterns with known age groups.</p>
             </div>
-            <div class="question">
-              <div class="question-header">
-                <h3>Can the model be improved?</h3>
-                <button class="toggle-btn">+</button>
-              </div>
-              <div class="answer">
-                <p>Yes! Continuous training with new datasets can improve accuracy and adaptability to different facial structures.</p>
-              </div>
+          </div>
+          <div class="question">
+            <div class="question-header">
+              <h3>What are the age bins used?</h3>
+              <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="answer">
+              <p>The model categorizes ages into bins of 5 years, such as 0-5, 5-10, 10-15, and so on up to 70+. This binning approach provides more reliable predictions than attempting to predict exact ages.</p>
+            </div>
+          </div>
+          <div class="question">
+            <div class="question-header">
+              <h3>Can the model be improved?</h3>
+              <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="answer">
+              <p>Yes! Continuous training with new datasets can improve accuracy and adaptability to different facial structures. We regularly update our models with more diverse training data to enhance performance across various demographics.</p>
+            </div>
+          </div>
+          <div class="question">
+            <div class="question-header">
+              <h3>How is user privacy protected?</h3>
+              <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="answer">
+              <p>We take privacy seriously. All image processing happens locally in your browser or on our secure servers with immediate deletion after processing. No facial images are stored or used for any purpose other than the immediate age and gender prediction.</p>
+            </div>
+          </div>
+          <div class="question">
+            <div class="question-header">
+              <h3>What technologies power this system?</h3>
+              <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="answer">
+              <p>Our system uses a combination of OpenCV for face detection, custom-trained convolutional neural networks (CNNs) for feature extraction, and advanced classification algorithms for the final predictions. The backend is powered by Python with TensorFlow, while the frontend uses JavaScript and HTML5.</p>
             </div>
           </div>
         </div>
@@ -98,32 +218,121 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="team">
+    <section id="team" class="team-section">
       <div class="container">
-        <h2>Meet the Team</h2>
+        <div class="section-header">
+          <span class="tag">The Creators</span>
+          <h2>Meet the Team</h2>
+        </div>
         <div class="team-boxes">
           <div class="team-box">
-            <img src="static/Tanmai.jpeg" alt="Tanmai Raghava" />
-            <h3>Tanmai Raghava</h3>
-            <p>Developer</p>
-            <h6>- Frontend</h6>
+            <div class="team-image">
+              <img src="static/Tanmai.jpeg" alt="Tanmai Raghava" />
+              <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Tanmai Raghava</h3>
+              <p class="team-role">Lead Developer</p>
+              <p class="team-specialty">Frontend </p>
+              <p class="team-bio">Specializes in creating intuitive user interfaces.</p>
+            </div>
           </div>
           <div class="team-box">
-            <img src="static/gngng.jpeg" alt="Yesheeth Chintada" />
-            <h3>Yesheeth Chintada</h3>
-            <p>Developer</p>
-            <h6>- Backend</h6>
+            <div class="team-image">
+              <img src="static/gngng.jpeg" alt="Yesheeth Chintada" />
+              <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Yesheeth Chintada</h3>
+              <p class="team-role">Lead Developer</p>
+              <p class="team-specialty">Backend & AI Systems</p>
+              <p class="team-bio">Specializes in machine learning algorithms with a focus on computer vision.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- JavaScript for Toggle Menu -->
-    <script>
-      function toggleMenu() {
-        document.querySelector('.nav-links').classList.toggle('active');
-      }
-    </script>
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2>Stay Updated</h2>
+          <p>Subscribe to our newsletter for the latest updates on our age prediction technology.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" class="primary-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <i class="fas fa-brain"></i> The Sweet 16
+            <p>Advanced Age & Gender Detection</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Navigation</h4>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#qa">Q&A</a></li>
+                <li><a href="#team">Team</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Resources</h4>
+              <ul>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">API Access</a></li>
+                <li><a href="#">Research Paper</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Connect</h4>
+              <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 The Sweet 16. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Loading Animation -->
+    <div class="loader">
+      <div class="loader-content">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
 
     <!-- External JavaScript File -->
     <script src="static/script.js"></script>

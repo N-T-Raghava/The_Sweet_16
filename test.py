@@ -10,11 +10,6 @@ class TestAgeGenderDetection(unittest.TestCase):
     def setUpClass(cls):
         cls.client = app.test_client()
         cls.test_image_path = "static/Tanmai.jpeg"  # Ensure you have a test image in the directory
-
-    def setUp(self):
-        """Set up test client before each test."""
-        self.app = app.test_client()  # Initialize the test client
-        self.app.testing = True  # Enable testing mode
     
     def test_model_loading(self):
         """Test if models are loaded properly."""
@@ -59,12 +54,36 @@ class TestAgeGenderDetection(unittest.TestCase):
         response = self.client.get('/video_feed')
         self.assertEqual(response.status_code, 200, "Video feed endpoint failed")
         self.assertTrue(response.mimetype.startswith('multipart/x-mixed-replace'), "Incorrect MIME type")
-
+    
     def test_index_page(self):
         """Test if index.html loads successfully."""
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'<title>Age Prediction - The Sweet 16</title>', response.data)
+
+    def setUp(self):
+        """Set up test client before each test."""
+        self.app = app.test_client()  # Initialize the test client
+        self.app.testing = True  # Enable testing mode
+
+    def test_index_links(self):
+        """Test if all navigation links exist on index.html."""
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<a href="#qa">Q&A</a>', response.data)
+
+    def test_faq_toggle(self):
+        """Test if FAQ toggle buttons exist in index.html."""
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<button class="toggle-btn"><i class="fas fa-plus"></i></button>', response.data) #Corrected line
+    
+    def test_nav_hamburger(self):
+        """Test if the hamburger menu exists in index.html."""
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<div class="hamburger" onclick="toggleMenu()">', response.data) #Corrected line
+        self.assertIn(b'<div class="bar"></div>', response.data) #added line.
 
     def test_try_page(self):
         """Test if try.html loads successfully."""
@@ -77,26 +96,14 @@ class TestAgeGenderDetection(unittest.TestCase):
         response = self.client.get('/pic')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'<title>Upload Image - Age and Gender Prediction</title>', response.data)
-
-    def test_nav_hamburger(self):
-        """Test if the hamburger menu exists in index.html."""
-        response = self.app.get('/')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('<div class="hamburger" onclick="toggleMenu()">☰</div>'.encode('utf-8'), response.data)
-
-    def test_index_links(self):
-        """Test if all navigation links exist on index.html."""
-        response = self.app.get('/')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b'<a href="#qa">Q&A</a>', response.data)
-
+    
     def test_upload_form(self):
         """Test if the upload form exists in pic.html."""
         response = self.client.get('/pic')
         self.assertIn(b'<form id="uploadForm">', response.data)
         self.assertIn(b'<input type="file"', response.data)
         self.assertIn(b'<button type="submit">Predict</button>', response.data)
-
+    
     def test_js_inclusion(self):
         """Test if JavaScript files are included in index.html."""
         response = self.client.get('/')
@@ -107,21 +114,18 @@ class TestAgeGenderDetection(unittest.TestCase):
         response = self.client.get('/')
         self.assertIn(b'<link rel="stylesheet" href="static/style.css" />', response.data)
     
-    def test_faq_toggle(self):
-        """Test if FAQ toggle buttons exist in index.html."""
-        response = self.client.get('/')
-        self.assertIn(b'<button class="toggle-btn">+</button>', response.data)
-    
     def test_team_section(self):
         """Test if the team section contains the expected team members."""
         response = self.client.get('/')
         self.assertIn(b'<h3>Tanmai Raghava</h3>', response.data)
         self.assertIn(b'<h3>Yesheeth Chintada</h3>', response.data)
+    
 
     def test_live_video_toggle(self):
         """Test if the Start Detection button exists in try.html."""
         response = self.client.get('/try')
         self.assertIn(b'<button id="startButton" onclick="toggleVideo()">Start Detection</button>', response.data)
-
+    
+    
 if __name__ == '__main__':
     unittest.main()
