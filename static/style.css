@@ -393,9 +393,9 @@
   
   /* About Section */
   .about-section {
-    left: 110px;
+    margin: 0 auto;
     background: linear-gradient(to right, var(--bg-gradient-start), var(--bg-gradient-end));
-    padding: 100px 0;
+    padding: 100px 150px;
   }
   
   .about-box {
