@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Live Age & Gender Detection</title>
-    <link
-      rel="stylesheet"
-      href="static\style1.css"
-    />
+    <link rel="stylesheet" href="static\style1.css" />
   </head>
   <body>
     <div class="container">
@@ -32,7 +29,7 @@
 
       function toggleVideo() {
         if (!isStreaming) {
-          videoFeed.src = "{{ url_for('video_feed') }}";
+          videoFeed.src = "{'/video_feed'}";
           videoFeed.style.display = "block";
           startButton.textContent = "Stop Detection";
           isStreaming = true;
